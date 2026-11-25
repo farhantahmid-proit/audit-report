@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  --color-surface-base: #000000;
+  --color-surface-muted: #060a0f;
+  --color-surface-strong: #0d1117;
+  --color-text-primary: #f1f5f9;
+  --color-text-inverse: #aaaaaa;
+  --color-border-muted: rgba(255, 255, 255, 0.12);
+  --color-border-strong: #81c5c9;
+  --color-status-pass: #6ee7b7;
+  --color-status-warn: #fbbf24;
+  --color-status-error: #f87171;
+}
+
+:root {
+  color-scheme: dark;
+
+  /* Core OpenSandbox Semantic Color Tokens */
+  --color-text-primary: #f1f5f9;
+  --color-text-inverse: #aaaaaa;
+  --color-border-muted: #ffffff;
+  --color-border-muted-hairline: rgba(255, 255, 255, 0.09);
+  --color-border-muted-subtle: rgba(255, 255, 255, 0.16);
+  --color-border-strong: #81c5c9;
+  --color-surface-base: #000000;
+  --color-surface-muted: #060a0f;
+  --color-surface-strong: #0d1117;
+
+  /* Accessible Semantic Feedback Tokens (paired with explicit icons & labels) */
+  --color-feedback-error: #f87171;
+  --color-feedback-error-surface: rgba(248, 113, 113, 0.1);
+  --color-feedback-warn: #fbbf24;
+  --color-feedback-warn-surface: rgba(251, 191, 36, 0.1);
+  --color-feedback-pass: #6ee7b7;
+  --color-feedback-pass-surface: rgba(110, 231, 183, 0.1);
+
+  /* Typography Tokens */
+  --font-family-primary: "DM Sans";
+  --font-family-stack: "DM Sans", system-ui, sans-serif;
+  --font-size-base: 18.88px;
+  --font-weight-base: 300;
+  --font-line-height-base: 33.6064px;
+  --font-size-xs: 12px;
+  --font-size-sm: 13px;
+  --font-size-md: 14px;
+  --font-size-lg: 15.2px;
+  --font-size-xl: 16px;
+  --font-size-2xl: 17.28px;
+  --font-size-3xl: 18.24px;
+  --font-size-4xl: 18.88px;
+
+  /* Spacing Scale Tokens */
+  --space-1: 1.82px;
+  --space-2: 2.24px;
+  --space-3: 2.4px;
+  --space-4: 3.2px;
+  --space-5: 5px;
+  --space-6: 5.44px;
+  --space-7: 6.4px;
+  --space-8: 7.2px;
+
+  /* Radius Scale Tokens */
+  --radius-xs: 2px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 18px;
+  --radius-2xl: 50px;
+  --radius-step7: 999px;
+  --radius-step8: 9999px;
+
+  /* Elevation & Shadow Tokens */
+  --shadow-1: rgba(255, 255, 255, 0.09) 0px 0px 0px 1px, rgba(0, 0, 0, 0.45) 0px 2px 6px 0px;
+  --shadow-2: rgba(255, 255, 255, 0.09) 0px 0px 0px 1px, rgba(0, 0, 0, 0.45) 0px 0px 24px 0px;
+  --shadow-3: rgba(69, 157, 161, 0.25) 0px 0px 0px 1px, rgba(69, 157, 161, 0.18) 0px 8px 40px 0px;
+  --shadow-4: rgba(0, 0, 0, 0.38) 0px 8px 28px 0px;
+
+  /* Motion Duration Tokens */
+  --motion-duration-instant: 150ms;
+  --motion-duration-fast: 200ms;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-family-stack);
+    background-color: var(--color-surface-base);
+    color: var(--color-text-primary);
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background-color: var(--color-surface-base);
+    color: var(--color-text-primary);
+    overflow-x: clip;
+  }
+
+  /* Global WCAG 2.2 AA focus-visible guarantee */
+  :focus-visible {
+    outline: 2px solid var(--color-border-strong);
+    outline-offset: 2px;
+  }
+
+  /* Optical balance for headings */
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+}
+
+/* Custom semantic utility helpers mapped to OpenSandbox tokens */
+.surface-base {
+  background-color: var(--color-surface-base);
+}
+
+.surface-muted {
+  background-color: var(--color-surface-muted);
+}
+
+.surface-strong {
+  background-color: var(--color-surface-strong);
+}
+
+.shadow-token-1 {
+  box-shadow: var(--shadow-1);
+}
+
+.shadow-token-2 {
+  box-shadow: var(--shadow-2);
+}
+
+.shadow-token-3 {
+  box-shadow: var(--shadow-3);
+}
+
+.shadow-token-4 {
+  box-shadow: var(--shadow-4);
+}
+
+.prose-opensandbox {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-base);
+  line-height: var(--font-line-height-base);
+  letter-spacing: 0.01em;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+#saved-audits-drawer-button:focus,
+#saved-audits-drawer-button:focus-visible {
+  outline: 2px solid var(--color-border-strong);
+  outline-offset: 2px;
+}
+
+/* Reduced motion compliance (WCAG 2.3.3) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

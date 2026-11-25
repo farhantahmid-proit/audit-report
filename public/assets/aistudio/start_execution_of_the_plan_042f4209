@@ -1,0 +1,582 @@
+﻿Auditing the 416 deduplicated GitHub repository links from this chat isolates 78 qualifying, upstream-verified forked repositories (consolidated from 120+ cross-handle mirror links across farhantahmid-proit, fts-pro, DEMOITS-POC, and 2 derived third-party security forks) spanning Site-Audit/SEO & Scraping, SMM/Messaging, Security, AI/Agents, Data/RAG/OCR/Speech, and SaaS/Infra/Tools.
+1. Scope Filtering, Exclusions, and Cross-Handle Deduplication
+Strict scoping applied to the 422 unique URLs parsed in this chat (without querying external workspace documents) partitions the inventory as follows:
+Filtering Stage
+	Count
+	Action & Exact Scope Rule
+	Non-Repository & Non-GitHub Links
+	6
+	Excluded: teamily.ai, codata.io, developers.openai.com, [github.com/feed](https://github.com/feed), [github.com/frappe-pr-bot](https://github.com/frappe-pr-bot), [github.com/fts-pro?page=16&tab=repositories](https://github.com/fts-pro?page=16&tab=repositories).
+	HelloKhata (HK) & Personally Owned Repos
+	9
+	Excluded: BanglaBiz-AI, BanglaBiz-HK-ERP, FTS-HK-OLD, HKAI-ShopKeeper, Smart-DigiBiz, GeminAI-STT-TTS, BanglaScript, AIaaS, and DEMOITS-POC/knowledge-catalog.
+	Non-Forked Third-Party Links
+	67
+	Excluded: Standalone external links not forked under your handles (unless serving solely as the canonical upstream parent of a Farhan fork, such as appsmith, bbot, stagehand, social-analyzer, VvvebJs, zeroleaks, horizon, agent-orchestrator, Ornith-1).
+	Out-of-Scope Forks
+	25+
+	Excluded from deep analysis: OS/kernel research (xv6-riscv, managarm), embedded/hardware/IoT (platformio-core, flipperzero-firmware, ESP32-DIV, 100_Days_100_IoT_Projects, Flipper, VINS-Fusion), animation/media (OpenAnimationLibrary/ot3d, freemocap, invidious), desktop tweaking (Win11Debloat), mobile wallet (openwallet-android), and general study/curated lists (build-your-own-x, coding-interview-university, system-design-notes, flink-learning, AI-For-Beginners, ACLPUB, awesome-useful-websites, API-mega-list, komi-learn).
+	Qualifying Upstream-Verified Forks
+	78
+	Audited below: Deduplicated across farhantahmid-proit, fts-pro, DEMOITS-POC, plus derived third-party security forks (BaaRai/ARTEX, elementalsouls/Claude-BugHunter).
+	Cross-handle mirroring is extensive: 28 of the audited upstream repositories are simultaneously forked into two handles (farhantahmid-proit + fts-pro or fts-pro + DEMOITS-POC), including appsmith, VvvebJs, zeroleaks, noir, chatwoot, vllm, mlc-llm, airllm, langroid, OpenHands, PraisonAI, agent-orchestrator, Ornith-1, UI-TARS-desktop, OpenSandbox, superpowers, paperclip, rtk, meilisearch, sentence-transformers, olmocr, RAG-Anything, chunkr, supervision, Sana, XMem, paperless-ngx, sentry, puter, nango, ntfy, Pake, swr, and horizon.
+2. Security, Site-Audit/SEO, Web Scraping, and SMM Forks
+This pillar spans 17 canonical upstream repositories across attack-surface reconnaissance, AI/code security auditing, adaptive web scraping, and omnichannel/social intelligence.
+Forked Handle(s)
+	Canonical Upstream Parent
+	Primary Stack & Deployment
+	License
+	Traction (2026)
+	Status
+	fts-pro
+	blacklanternsecurity/bbot
+	Python (async recursive scanner); CLI / Docker
+	GPL-3.0
+	Fast-growing OSINT standard
+	Active (Nov 2026)
+	farhantahmid-proit
+	j3ssie/osmedeus
+	Go (distributed workflow engine); CLI / Docker
+	MIT
+	~6.7k stars
+	Active (Nov 2026)
+	farhantahmid-proit, fts-pro
+	owasp-noir/noir
+	Crystal (static AST route discovery); CLI
+	MIT
+	1.5k stars, 164 forks
+	Active
+	farhantahmid-proit, fts-pro
+	ZeroLeaks/zeroleaks
+	TypeScript / Node (LLM red-teaming); CLI / Web
+	FSL-1.1-Apache-2.0
+	737 stars, 123 forks
+	Active (Nov 2026)
+	BaaRai/ARTEX (3rd-party fork)
+	Autumn-27/ARTEX → BaaRai/ARTEX
+	Go (self-hosted dual-graph AI pentest); Docker
+	AGPL-3.0
+	Community continuation
+	Active (Nov 2026)
+	farhantahmid-proit, elementalsouls/Claude-BugHunter
+	shuvonsec/claude-bug-bounty
+	Markdown / Claude Code skill definitions
+	Unverified
+	Niche red-team skill pack
+	Active
+	fts-pro
+	dstotijn/hetty
+	Go + Next.js (HTTP intercept proxy); Single binary
+	MIT
+	12.5k stars
+	Stagnant (low/older commits)
+	fts-pro
+	musana/CF-Hero
+	Go (Cloudflare origin IP recon); CLI
+	Apache-2.0
+	~953 stars
+	Maintained
+	fts-pro
+	elder-plinius/OBLITERATUS
+	Python (LLM refusal-vector ablation & telemetry)
+	Unverified
+	Active releases (v0.1.4 Oct 2026)
+	Active
+	farhantahmid-proit
+	D4Vinci/Scrapling
+	Python (adaptive anti-bot scraping + full crawler); CLI / Docker
+	BSD-3-Clause
+	105k stars
+	Active (Nov 2026)
+	farhantahmid-proit
+	browserbase/stagehand
+	TypeScript / Playwright (AI-native browser automation)
+	MIT
+	26.1k stars
+	Active
+	farhantahmid-proit
+	getmaxun/maxun
+	TypeScript / Playwright (no-code web-to-API extractor); Docker
+	AGPL-3.0
+	18.6k stars, 1.6k forks
+	Active
+	farhantahmid-proit
+	qeeqbox/social-analyzer
+	Node.js / Python (OSINT across 1,000+ social platforms); API / CLI / Web
+	AGPL-3.0
+	24.6k stars
+	Maintained
+	farhantahmid-proit, fts-pro
+	chatwoot/chatwoot
+	Ruby on Rails + Vue.js (omnichannel CX/SMM inbox); Docker / K8s
+	MIT + Enterprise
+	40k+ stars, 3.2k forks
+	Active
+	farhantahmid-proit
+	devlikeapro/waha
+	Node.js / Docker (self-hosted WhatsApp HTTP REST API)
+	Apache-2.0 (Core)
+	7.9k stars, 1.9k forks
+	Active
+	farhantahmid-proit
+	capcom6/android-sms-gateway
+	Go / Kotlin (Android phone to HTTP SMS gateway); Self-hosted
+	Apache-2.0
+	Production SDK ecosystem
+	Active
+	Architectural Highlights & Functional Positioning
+* Reconnaissance & Attack-Surface Mapping: blacklanternsecurity/bbot operates an event-driven recursive scan graph (subdomains, emails, cloud buckets, web tech), while j3ssie/osmedeus orchestrates distributed multi-tool vulnerability pipelines. owasp-noir/noir complements dynamic scanners with white-box AST parsing to uncover undocumented Shadow APIs directly from source code.
+* AI-Native Security & Red-Teaming: ZeroLeaks/zeroleaks audits LLM endpoints for system-prompt extraction and injection, BaaRai/ARTEX runs self-hosted, model-agnostic autonomous penetration tests with evidence-backed findings, and elder-plinius/OBLITERATUS analyzes and removes refusal vectors inside model weights.
+* Site-Audit, Crawling & Web-to-API: Rather than traditional SEO keyword trackers, your scraping stack is built for programmatic extraction and automated auditing. D4Vinci/Scrapling leads the category at 105k stars with adaptive DOM element relocation and stealth fetching; browserbase/stagehand pairs natural-language primitives with Playwright determinism; and getmaxun/maxun turns visual browser recordings into scheduled REST APIs.
+* SMM & Messaging Channels: qeeqbox/social-analyzer covers social-profile OSINT across 1,000+ networks, while chatwoot/chatwoot, devlikeapro/waha, and capcom6/android-sms-gateway form a complete self-hosted omnichannel customer messaging stack (Web/Social inbox + WhatsApp REST + SMS).
+3. AI Core, LLM Serving, Agentic Orchestration, MCP, and Coding Assistants
+This is the largest pillar, covering 24 verified upstream projects spanning high-throughput inference, multi-agent runtimes, computer-use sandboxes, coding agents, and Model Context Protocol (MCP) tooling.
+Forked Handle(s)
+	Canonical Upstream Parent
+	Architecture & Core Capability
+	License
+	Traction (2026)
+	Status
+	farhantahmid-proit, fts-pro
+	vllm-project/vllm
+	Python/Rust LLM serving engine with PagedAttention (2–4x throughput)
+	Apache-2.0
+	~93k stars
+	Active
+	farhantahmid-proit, fts-pro
+	mlc-ai/mlc-llm
+	C++/TVM universal compiler deploying LLMs on edge, mobile, WebGPU
+	Apache-2.0
+	23.4k stars, 2.2k forks
+	Active
+	farhantahmid-proit, fts-pro
+	lyogavin/airllm
+	Layer-wise inference enabling 70B models on 4GB VRAM GPUs
+	Apache-2.0
+	25.8k+ stars, 2.9k forks
+	Active
+	farhantahmid-proit, fts-pro
+	ornith-ai/Ornith-1
+	Specialized AI model/framework repo (sparse public upstream docs)
+	Unverified
+	Minimal public footprint
+	Unverified
+	farhantahmid-proit, fts-pro
+	obra/superpowers
+	Agentic skills framework & structured software-dev methodology
+	MIT
+	323.5k stars (#14 global)
+	Active
+	fts-pro
+	open-webui/open-webui
+	Self-hosted extensible chat, RAG, and model-routing frontend
+	Open WebUI License (Custom)
+	~159k stars
+	Active
+	farhantahmid-proit, fts-pro
+	rtk-ai/rtk
+	Single-binary Rust CLI proxy cutting LLM token consumption 60–90%
+	Apache-2.0 / MIT
+	87.7k stars
+	Active
+	fts-pro
+	bytedance/deer-flow
+	Long-horizon super-agent harness with sub-agents, memory & sandboxes
+	MIT
+	85.5k stars (#1 trending Feb 2026)
+	Active
+	fts-pro
+	daytonaio/daytona
+	Go/SDK elastic sandbox infrastructure for executing AI-generated code
+	Apache-2.0
+	71k stars, 5.6k forks
+	Active (Oct 2026)
+	farhantahmid-proit, fts-pro
+	All-Hands-AI/OpenHands
+	Python autonomous software-engineering agent platform
+	MIT
+	65k+ stars
+	Active (Nov 2026)
+	farhantahmid-proit, fts-pro
+	onyx-dot-app/onyx
+	Enterprise AI context layer, connectors, and internal search
+	MIT + Onyx EE
+	33.5k stars, 4.8k forks
+	Active
+	fts-pro
+	QwenLM/qwen-code
+	Node.js terminal-native AI coding agent
+	Apache-2.0
+	31k stars, 3.6k forks
+	Active (Nov 2026)
+	farhantahmid-proit
+	langchain-ai/deepagents
+	Python (deepagents) & JS (deepagentsjs) deep-planning agent runtime
+	MIT
+	30.4k stars, 4.3k forks
+	Active
+	fts-pro
+	block/goose
+	Rust core + TypeScript/Electron extensible local AI agent
+	Apache-2.0
+	27.3k+ stars
+	Active (Nov 2026)
+	fts-pro
+	eyaltoledano/claude-task-master
+	AI task-orchestration system & MCP server for agentic coding
+	MIT
+	27.3k stars
+	Active
+	farhantahmid-proit, fts-pro
+	bytedance/UI-TARS-desktop
+	Multimodal GUI desktop & browser agent stack
+	Apache-2.0
+	High growth (2026)
+	Active (Nov 2026)
+	fts-pro
+	k8sgpt-ai/k8sgpt
+	Go CNCF Kubernetes cluster diagnostic & remediation AI analyzer
+	Apache-2.0
+	8.3k stars, 1.1k forks
+	Active (Nov 2026)
+	farhantahmid-proit
+	idosal/git-mcp
+	Remote MCP server converting any GitHub repo/docs into live agent context
+	MIT
+	7.8k stars
+	Active
+	farhantahmid-proit, fts-pro
+	alibaba/OpenSandbox (opensandbox-group)
+	Isolated execution sandbox runtime built specifically for AI agents
+	Apache-2.0
+	7.4k+ stars
+	Active
+	farhantahmid-proit, fts-pro
+	langroid/langroid
+	Python actor-model multi-agent programming framework
+	MIT
+	4.2k stars, 441 forks
+	Active
+	farhantahmid-proit
+	github/github-mcp-server
+	Official GitHub MCP server for repos, PRs, issues, and code scanning
+	MIT
+	Official upstream
+	Active (Nov 2026)
+	farhantahmid-proit, fts-pro
+	MervinPraison/PraisonAI
+	Low-overhead offline Python/TS multi-agent framework + MCP
+	MIT
+	Active SDK suite
+	Active
+	farhantahmid-proit, fts-pro
+	OrchestratorInc/agent-orchestrator
+	Cross-platform desktop/mobile control plane supervising 35+ coding agents
+	Unverified
+	Active PRs/releases
+	Active
+	farhantahmid-proit, fts-pro
+	paperclipai/paperclip
+	Open-source management app for running AI agent teams at work
+	MIT
+	Active community
+	Active
+	fts-pro
+	reworkd/AgentGPT
+	Browser-based autonomous AutoGPT-era agent runner
+	GPL-3.0
+	Legacy 2023 viral hit
+	Archived (Jan 28, 2026)
+	fts-pro
+	microsoft/promptflow
+	DAG-based LLM prompt orchestration & evaluation toolkit
+	MIT
+	Legacy Azure tooling
+	Archived (Aug 2026)
+	Key Technical Takeaways
+* Inference & Cost Optimization: vllm-project/vllm handles high-concurrency GPU production serving, mlc-ai/mlc-llm compiles models for edge/WebGPU, and rtk-ai/rtk sits as a zero-dependency Rust CLI proxy that strips noisy command output to cut agent token bills by 60–90%.
+* Sandboxed Execution & Fleet Supervision: Running autonomous coding agents safely is covered by two dedicated sandboxes (daytonaio/daytona and alibaba/OpenSandbox) alongside fleet control planes (OrchestratorInc/agent-orchestrator, paperclipai/paperclip, All-Hands-AI/OpenHands, and bytedance/deer-flow).
+* Lifecycle Casualties: Two major early-wave agent orchestration frameworks in fts-pro were officially archived in 2026—reworkd/AgentGPT (Jan 2026) and microsoft/promptflow (Aug 2026)—making them safe to drop from active development.
+4. Data, RAG, Vector Search, OCR, Speech/Voice AI, and Computer Vision Forks
+This pillar consolidates 14 upstream data-engineering, retrieval, document-intelligence, vision, and voice/NLP forks.
+Forked Handle(s)
+	Canonical Upstream Parent
+	Architecture & Core Capability
+	License
+	Traction (2026)
+	Status
+	farhantahmid-proit, fts-pro
+	meilisearch/meilisearch
+	Rust typo-tolerant hybrid full-text + vector search engine
+	MIT
+	~60k stars (59,977)
+	Active
+	farhantahmid-proit, fts-pro
+	roboflow/supervision
+	Python reusable computer-vision utilities (annotators, trackers, datasets)
+	MIT
+	52k stars, 5k forks
+	Active
+	fts-pro, DEMOITS-POC
+	HKUDS/RAG-Anything
+	All-in-one multimodal RAG indexing text, tables, equations, and figures
+	MIT
+	23.5k+ stars
+	Active (Nov 2026)
+	farhantahmid-proit, fts-pro
+	huggingface/sentence-transformers
+	PyTorch state-of-the-art dense/sparse embeddings, retrieval & reranking
+	Apache-2.0
+	19.3k stars
+	Active
+	farhantahmid-proit, fts-pro
+	NVlabs/Sana
+	Linear-diffusion high-resolution (up to 4K) fast image generation
+	Apache-2.0
+	9.9k stars, 815 forks
+	Active (Nov 2026)
+	farhantahmid-proit, fts-pro
+	hkchengrex/XMem
+	Long-term video object segmentation using Atkinson-Shiffrin memory
+	GPL-3.0
+	~2k stars (1,976)
+	Research / Stable
+	farhantahmid-proit, fts-pro
+	allenai/olmocr
+	VLM-powered PDF-to-Markdown linearization (olmOCR-2-7B-1025-FP8)
+	Apache-2.0
+	Production LLM dataset tool
+	Active
+	farhantahmid-proit
+	Yuliang-Liu/MonkeyOCR
+	Document-native vision encoder OCR for complex layouts & formulas
+	Apache-2.0
+	Active (v2 vision encoder)
+	Active
+	farhantahmid-proit, fts-pro
+	lumina-ai-inc/chunkr
+	Rust/Python vision document-layout parser outputting LLM-ready chunks
+	AGPL-3.0 + Commercial
+	Growing enterprise RAG infra
+	Active
+	DEMOITS-POC
+	StarTrail-org/LEANN
+	Graph-based low-storage local vector DB (97% storage savings for RAG)
+	MIT
+	MLSys 2026 Best Paper
+	Active
+	farhantahmid-proit, fts-pro
+	zvec (zvec / zvec-studio)
+	Open-source, in-process embedded vector database
+	Apache-2.0
+	Lightweight embedded retrieval
+	Active
+	farhantahmid-proit
+	google-research/timesfm
+	Decoder-only time-series forecasting foundation model (TimesFM 2.5, 200M)
+	Apache-2.0
+	Industry standard TSFM
+	Active (Oct 2026)
+	farhantahmid-proit, fts-pro
+	dograh-hq/dograh
+	Open-source, self-hosted conversational voice AI platform
+	Open source
+	Trending Nov 2026
+	Active (Nov 2026)
+	fts-pro
+	AI4Bharat/IndicXlit & shhossain/BanglaSpeech2Text
+	21-language Indic transliteration (IndicXlit) & offline Whisper Bangla STT
+	MIT
+	Core South Asian NLP tools
+	Maintained
+	Key Technical Takeaways
+* Document Intelligence & OCR Pipeline: You have three complementary document parsers: allenai/olmocr (VLM batch linearization of "gnarly" PDFs under Apache-2.0), Yuliang-Liu/MonkeyOCR (document-native visual encoding under Apache-2.0), and lumina-ai-inc/chunkr (full layout-to-chunk API service, though AGPL-3.0 requires a commercial license for closed SaaS).
+* Local & Embedded Vector Retrieval: StarTrail-org/LEANN (MLSys 2026 Best Paper, MIT) and zvec (Apache-2.0) remove standalone vector-server overhead for edge/laptop RAG, while meilisearch/meilisearch (MIT) serves production hybrid search.
+5. SaaS Platforms, Low-Code/App Builders, Self-Hosted Infrastructure, and Dev Tools
+This pillar covers 21 canonical upstreams spanning internal tool builders, self-hosted PaaS and storage, observability, analytics, API integration, and developer utilities.
+Forked Handle(s)
+	Canonical Upstream Parent
+	Architecture & Core Capability
+	License
+	Traction (2026)
+	Status
+	farhantahmid-proit
+	syncthing/syncthing
+	Go continuous P2P encrypted file synchronization
+	MPL-2.0
+	91k stars, 5.6k forks
+	Active
+	farhantahmid-proit
+	coollabsio/coolify
+	PHP/Laravel + Docker self-hosted Heroku/Vercel PaaS alternative
+	Apache-2.0
+	66k stars, 6k forks
+	Active (Nov 2026)
+	farhantahmid-proit
+	penpot/penpot
+	Clojure + ClojureScript open-source SVG/CSS Figma alternative
+	MPL-2.0
+	62.6k stars
+	Active
+	fts-pro
+	pocketbase/pocketbase
+	Go single-binary BaaS (embedded SQLite, realtime, auth, admin UI)
+	MIT
+	62k stars, 3.8k forks
+	Active (Oct 2026)
+	farhantahmid-proit, fts-pro
+	paperless-ngx/paperless-ngx
+	Django/Python + Angular OCR document archive & DMS
+	GPL-3.0
+	48.1k stars
+	Active
+	farhantahmid-proit, fts-pro
+	getsentry/sentry
+	Python/Rust/React error tracking & APM observability platform
+	FSL-1.1-Apache-2.0
+	45.9k stars, 5.0k forks
+	Active
+	fts-pro, DEMOITS-POC
+	HeyPuter/puter
+	JS/Node self-hosted browser Cloud OS ("Internet Computer")
+	AGPL-3.0
+	44k stars, 4.1k forks
+	Active
+	farhantahmid-proit, fts-pro
+	appsmithorg/appsmith
+	Java/Spring + React low-code internal app builder (25+ DBs/APIs)
+	Apache-2.0
+	41k stars, 4.9k forks
+	Active
+	farhantahmid-proit
+	umami-software/umami
+	Next.js + Prisma privacy-first web & site analytics (GA alternative)
+	MIT
+	40.3k stars
+	Active (Nov 2026)
+	farhantahmid-proit
+	1Panel-dev/1Panel
+	Go + Vue containerized Linux & AI server management panel
+	GPL-3.0
+	38k stars, 3.4k forks
+	Active
+	farhantahmid-proit, fts-pro
+	binwiederhier/ntfy
+	Go HTTP pub-sub push notification server for phones & desktops
+	Apache-2.0 / GPL-2.0
+	32.7k stars
+	Active
+	fts-pro
+	firecrawl/open-lovable
+	Next.js AI site cloner recreating live websites as React apps
+	MIT
+	28.4k+ stars
+	Active
+	farhantahmid-proit, fts-pro
+	NangoHQ/nango
+	TypeScript OAuth/sync platform connecting apps & agents to 1,000+ APIs
+	Elastic License 2.0
+	13k stars
+	Active
+	farhantahmid-proit
+	nezhahq/nezha
+	Go lightweight self-hosted server & website uptime/O&M monitor
+	Apache-2.0
+	10.4k stars, 1.6k forks
+	Active
+	farhantahmid-proit, fts-pro
+	givanz/VvvebJs
+	Vanilla JS zero-dependency drag-and-drop web page builder
+	Apache-2.0
+	8.7k stars
+	Maintained
+	farhantahmid-proit, fts-pro
+	tw93/Pake
+	Rust/Tauri CLI wrapping web apps into lightweight native desktop apps
+	GPL-3.0
+	Major Tauri wrapper
+	Active (2026)
+	farhantahmid-proit
+	refly-ai/refly
+	Visual canvas & agent-skills workflow builder
+	ReflyAI OSS (Custom Apache-2.0+)
+	Active SaaS/OSS builder
+	Active
+	farhantahmid-proit
+	fleetbase/fleetbase
+	Modular logistics, fleet, and supply-chain operations platform
+	AGPL-3.0
+	Production logistics OS
+	Active
+	farhantahmid-proit, fts-pro
+	fastapi/sqlmodel, vercel/swr, schollz/croc
+	Python SQL ORM (sqlmodel), React data-fetching (swr), encrypted P2P transfer (croc)
+	MIT
+	Core ecosystem libraries
+	Active
+	fts-pro
+	minio/minio
+	Go S3-compatible object storage server
+	AGPL-3.0 (historical)
+	Legacy S3 standard
+	Archived / Dead OSS (2025–2026)
+	farhantahmid-proit, fts-pro
+	rethinkdb/horizon
+	Node.js realtime BaaS atop RethinkDB
+	Apache-2.0
+	Legacy 2016–2018 BaaS
+	Deprecated / Unmaintained
+	6. Cross-Cutting Synthesis: Licensing, Redundancy, and Lifecycle Health
+6.1 Commercial & Self-Hosting License Risk Matrix
+If you embed or white-label these forks into commercial SaaS products or client deployments, license obligations split into four risk tiers:
+License Tier
+	Key Audited Upstreams
+	Commercial / Self-Hosting Impact
+	Permissive (MIT, Apache-2.0, BSD-3)
+	vllm, mlc-llm, airllm, OpenHands, deer-flow, daytona, OpenSandbox, block/goose, QwenLM/qwen-code, deepagents, superpowers, rtk, Scrapling, stagehand, osmedeus, noir, meilisearch, supervision, RAG-Anything, LEANN, olmocr, MonkeyOCR, timesfm, Sana, appsmith, coolify, pocketbase, umami, VvvebJs, waha (Core), android-sms-gateway, sqlmodel, swr, croc [1.4.1, 1.5.1, 2.3.1, 2.4.1, 3.1.1, 3.3.1, 3.5.2, 3.7.1, 3.8.1, 4.3.1, 4.5.2, 5.7.1, 6.3.2, 6.4.1, 7.4.1, 7.5.1, 7.6.2, 7.8.1, 8.1.1, 8.2.2, 8.8.1, 9.1.1, 9.6.1, 10.1.1, 10.3.1, 11.1.1, 11.2.1, 11.8.1, 12.8.1, 13.1.1, 13.4.1, 14.3.1, 15.1.1]
+	Lowest friction: Safe for proprietary wrappers, multi-tenant SaaS, and commercial redistribution with attribution notices.
+	Weak Copyleft (MPL-2.0) & Open-Core (MIT + EE)
+	penpot (MPL-2.0), syncthing (MPL-2.0), chatwoot (MIT + EE), onyx (MIT + EE)
+	Moderate: Safe for internal/commercial deployment; MPL-2.0 requires sharing file-level changes, while Open-Core repos require stripping ee/ or enterprise/ directories unless paying for an enterprise key.
+	Strong / Network Copyleft (GPL-3.0, AGPL-3.0)
+	bbot, paperless-ngx, 1Panel, Pake (GPL-3.0); ARTEX, social-analyzer, maxun, chunkr, puter, fleetbase (AGPL-3.0)
+	High SaaS friction: AGPL-3.0 triggers full source disclosure even when modified code is exposed only over a network API/UI (requiring a commercial license if keeping SaaS modifications closed).
+	Source-Available / Non-OSI Custom
+	getsentry/sentry & ZeroLeaks/zeroleaks (FSL-1.1-Apache-2.0), NangoHQ/nango (Elastic License 2.0), open-webui/open-webui (Open WebUI License), refly-ai/refly (ReflyAI OSS)
+	Strict anti-competing clauses: Free for internal self-hosting, but prohibit offering the software as a competing hosted SaaS or removing branding/watermarks without a vendor license.
+	6.2 Lifecycle Alerts: Archived, Deprecated, or Stagnant Upstreams
+Four audited forks trace to upstreams that are archived or unmaintained in 2026 and should be pruned or migrated:
+1. minio/minio (fts-pro) — Archived / Discontinued OSS: Official open-source releases stalled after late 2025 (RELEASE.2025-09-07T16-13-09Z) and legacy minio/minio container templates no longer boot cleanly. Migrate S3-compatible object storage workloads to RustFS, Garage, or SeaweedFS.
+2. microsoft/promptflow (fts-pro) — Archived (Aug 2026): Core open-source support ended in August 2026. Replace with langchain-ai/deepagents or bytedance/deer-flow.
+3. reworkd/AgentGPT (fts-pro) — Archived (Jan 28, 2026): Superseded by production agent harnesses (All-Hands-AI/OpenHands, block/goose, bytedance/deer-flow).
+4. rethinkdb/horizon (farhantahmid-proit, fts-pro) — Deprecated Legacy BaaS: Fully superseded in your own fork list by pocketbase/pocketbase (62k stars, MIT).
+5. dstotijn/hetty (fts-pro) — Stagnant Maintenance: Minimal recent upstream activity despite 12.5k stars; verify compatibility against modern proxies (Caido/mitmproxy) before relying on it for active engagements.
+6.3 Competing Forks & Production Benchmarks by Domain
+Domain
+	Redundant / Overlapping Forks
+	Standout Production Pick
+	Why It Wins
+	Web Scraping & Extraction
+	Scrapling vs. stagehand vs. maxun
+	D4Vinci/Scrapling (data pipelines) + browserbase/stagehand (AI browser actions)
+	Permissive BSD-3 / MIT licenses, massive 2026 velocity (105k / 26.1k stars), and no AGPL-3.0 restriction (unlike maxun).
+	Agent Code Sandboxes
+	daytona vs. OpenSandbox
+	daytonaio/daytona
+	71k stars, Apache-2.0, mature multi-language SDKs and elastic cold-start isolation.
+	PDF / Document OCR
+	olmocr vs. MonkeyOCR vs. chunkr
+	allenai/olmocr (batch PDFs) + Yuliang-Liu/MonkeyOCR (complex layouts)
+	Both Apache-2.0 with dedicated vision-language models, avoiding chunkr's AGPL-3.0 commercial trigger.
+	Self-Hosted Server / PaaS
+	coolify vs. 1Panel
+	coollabsio/coolify (app deployments)
+	Apache-2.0 (vs. 1Panel's GPL-3.0), 66k stars, git-push PaaS workflow with zero vendor lock-in.
+	Backend-as-a-Service
+	pocketbase vs. horizon
+	pocketbase/pocketbase
+	Active single-binary Go/SQLite stack (62k stars, MIT) vs. deprecated rethinkdb/horizon.
+	AI Coding Agents
+	OpenHands vs. block/goose vs. qwen-code vs. deer-flow
+	All-Hands-AI/OpenHands (autonomous PRs) + rtk-ai/rtk (token proxy)
+	MIT-licensed production benchmark (65k+ stars) paired with 60–90% CLI token savings via rtk.

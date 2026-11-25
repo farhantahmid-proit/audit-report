@@ -1,8 +1,10 @@
 import React, { useEffect, useRef } from 'react';
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import {
   AlertTriangle,
   Bookmark,
   CheckCircle2,
+  ClipboardList,
   RotateCcw,
   Trash2,
   X,
@@ -35,10 +37,13 @@ export const SavedAuditsDrawer: React.FC<SavedAuditsDrawerProps> = ({
   const triggerRef = useRef<HTMLButtonElement | null>(null);
   const closeButtonRef = useRef<HTMLButtonElement | null>(null);
   const wasOpenRef = useRef<boolean>(false);
+  const shouldReduceMotion = useReducedMotion();
 
   const savedRecords: AuditRecord[] = ATTACHED_AUDIT_RECORDS.filter((record) =>
     savedAuditIds.includes(record.id)
   );
+
+  const drawerRef = useRef<HTMLElement | null>(null);
 
   // Move focus into drawer when opened, and restore focus to trigger button on close
   useEffect(() => {
@@ -50,7 +55,7 @@ export const SavedAuditsDrawer: React.FC<SavedAuditsDrawerProps> = ({
     wasOpenRef.current = isOpen;
   }, [isOpen]);
 
-  // Escape closes drawer cleanly
+  // Click-outside and Escape handlers for drawer
   useEffect(() => {
     if (!isOpen) return;
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -59,8 +64,24 @@ export const SavedAuditsDrawer: React.FC<SavedAuditsDrawerProps> = ({
         onClose();
       }
     };
+    const handlePointerDown = (event: PointerEvent) => {
+      const targetNode = event.target as Node | null;
+      if (
+        drawerRef.current &&
+        targetNode &&
+        !drawerRef.current.contains(targetNode) &&
+        triggerRef.current &&
+        !triggerRef.current.contains(targetNode)
+      ) {
+        onClose();
+      }
+    };
     window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    window.addEventListener('pointerdown', handlePointerDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('pointerdown', handlePointerDown);
+    };
   }, [isOpen, onClose]);
 
   // Explicit Enter and Space keyboard toggle handler for #saved-audits-drawer-button
@@ -107,10 +128,14 @@ export const SavedAuditsDrawer: React.FC<SavedAuditsDrawerProps> = ({
               aria-label="Open saved audits drawer"
               onClick={onToggle}
               onKeyDown={handleDrawerButtonKeyDown}
-              className="inline-flex min-h-[40px] items-center gap-2 rounded-[6px] border border-[var(--color-border-muted-subtle)] bg-[var(--color-surface-strong)] px-3.5 py-1.5 text-[13px] font-medium text-[var(--color-text-primary)] shadow-token-1 transition-all duration-150 hover:border-[var(--color-border-strong)] hover:shadow-token-2 focus:border-[var(--color-border-strong)] focus:shadow-token-3 focus-visible:border-[var(--color-border-strong)] focus-visible:shadow-token-3 whitespace-nowrap shrink-0 cursor-pointer"
+              className="inline-flex min-h-[44px] min-w-[44px] items-center gap-2 rounded-[6px] border border-[var(--color-border-muted-subtle)] bg-[var(--color-surface-strong)] px-4 py-2 text-[13px] font-medium text-[var(--color-text-primary)] shadow-token-1 transition-all duration-150 hover:border-[var(--color-border-strong)] hover:shadow-token-2 focus:border-[var(--color-border-strong)] focus:shadow-token-3 focus-visible:border-[var(--color-border-strong)] focus-visible:shadow-token-3 whitespace-nowrap shrink-0 cursor-pointer"
             >
               <Bookmark
                 className="h-3.5 w-3.5 text-[var(--color-border-strong)]"
+                aria-hidden="true"
+              />
+              <ClipboardList
+                className="h-4 w-4 text-[var(--color-border-strong)]"
                 aria-hidden="true"
               />
               <span aria-hidden="true">Saved Audits</span>
@@ -121,30 +146,54 @@ export const SavedAuditsDrawer: React.FC<SavedAuditsDrawerProps> = ({
                 ({savedRecords.length})
               </span>
               <span id="saved-audits-drawer-description" className="sr-only">
-                Clicking this button opens the side drawer for saved engineering audit reports and progress dashboards.
+                Opens the side drawer for saved engineering audit reports and progress dashboard
               </span>
             </button>
           </div>
         </div>
       </div>
 
-      {/* Slide-Over Saved Audits Drawer */}
-      {isOpen && (
-        <div
-          className="fixed inset-0 z-50 flex justify-end bg-black/75 backdrop-blur-xs"
-          onClick={(event) => {
-            if (event.target === event.currentTarget) {
-              onClose();
-            }
-          }}
-        >
-          <aside
-            id="saved-audits-drawer"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="saved-audits-drawer-title"
-            className="flex h-full w-full max-w-[460px] flex-col border-l border-[var(--color-border-muted-subtle)] bg-[var(--color-surface-strong)] shadow-token-4"
+      {/* Slide-Over Saved Audits Drawer with Framer Motion slide-in/slide-out */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            key="saved-audits-backdrop"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: shouldReduceMotion ? 0.01 : 0.2 }}
+            className="fixed inset-0 z-50 flex justify-end bg-black/75 backdrop-blur-xs"
+            onClick={(event) => {
+              if (event.target === event.currentTarget) {
+                onClose();
+              }
+            }}
           >
+            <motion.aside
+              ref={drawerRef}
+              key="saved-audits-drawer"
+              id="saved-audits-drawer"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="saved-audits-drawer-title"
+              initial={{
+                x: shouldReduceMotion ? 0 : '100%',
+                opacity: shouldReduceMotion ? 0 : 1,
+              }}
+              animate={{
+                x: 0,
+                opacity: 1,
+              }}
+              exit={{
+                x: shouldReduceMotion ? 0 : '100%',
+                opacity: shouldReduceMotion ? 0 : 1,
+              }}
+              transition={{
+                duration: shouldReduceMotion ? 0.01 : 0.3,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              className="flex h-full w-full max-w-[460px] flex-col border-l border-[var(--color-border-muted-subtle)] bg-[var(--color-surface-strong)] shadow-token-4"
+            >
             <div className="flex items-start justify-between gap-4 border-b border-[var(--color-border-muted-hairline)] px-5 py-4">
               <div className="space-y-1">
                 <p className="font-mono text-[12px] text-[var(--color-border-strong)]">
@@ -256,9 +305,10 @@ export const SavedAuditsDrawer: React.FC<SavedAuditsDrawerProps> = ({
                 Open Full Registry
               </button>
             </div>
-          </aside>
-        </div>
+          </motion.aside>
+        </motion.div>
       )}
+    </AnimatePresence>
     </>
   );
 };

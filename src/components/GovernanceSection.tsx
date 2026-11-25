@@ -363,7 +363,7 @@ export const GovernanceSection: React.FC<GovernanceSectionProps> = ({
               Interactive Implementation QA Checklist
             </h2>
             <p className="mt-1 font-mono text-[13px] text-[#aaaaaa] tabular-nums">
-              {checkedQaIds.length} of {QA_CHECKLIST.length} checks verified (persisted locally)
+              {checkedQaIds.length} of {QA_CHECKLIST.length} checks verified ({Math.round((checkedQaIds.length / QA_CHECKLIST.length) * 100)}% complete)
             </p>
           </div>
 
@@ -384,6 +384,77 @@ export const GovernanceSection: React.FC<GovernanceSectionProps> = ({
             </button>
           </div>
         </div>
+
+        {/* Visual Progress Ring and Status Bar */}
+        {(() => {
+          const total = QA_CHECKLIST.length;
+          const completed = checkedQaIds.length;
+          const pct = Math.min(100, Math.max(0, Math.round((completed / total) * 100)));
+          const radius = 18;
+          const circ = 2 * Math.PI * radius;
+          const strokeDashoffset = circ - (pct / 100) * circ;
+
+          return (
+            <div className="flex flex-col gap-3 rounded-[10px] bg-[#0d1117] p-4 shadow-token-1 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex items-center gap-4">
+                <div className="relative flex items-center justify-center shrink-0">
+                  <svg className="h-12 w-12 -rotate-90 transform" viewBox="0 0 44 44">
+                    <circle
+                      cx="22"
+                      cy="22"
+                      r={radius}
+                      stroke="rgba(255, 255, 255, 0.1)"
+                      strokeWidth="4"
+                      fill="none"
+                    />
+                    <circle
+                      cx="22"
+                      cy="22"
+                      r={radius}
+                      stroke="#81c5c9"
+                      strokeWidth="4"
+                      strokeDasharray={circ}
+                      strokeDashoffset={strokeDashoffset}
+                      strokeLinecap="round"
+                      fill="none"
+                      className="transition-all duration-300"
+                    />
+                  </svg>
+                  <span className="absolute font-mono text-[11px] font-semibold text-[#f1f5f9] tabular-nums">
+                    {pct}%
+                  </span>
+                </div>
+
+                <div className="min-w-0 space-y-1">
+                  <div className="flex items-center justify-between gap-4 text-[13.5px]">
+                    <span className="font-medium text-[#f1f5f9]">Release Readiness Progress</span>
+                    <span className="font-mono text-[12px] text-[#81c5c9] tabular-nums">
+                      {completed} / {total} verified
+                    </span>
+                  </div>
+                  {/* Status Bar */}
+                  <div
+                    role="progressbar"
+                    aria-valuenow={pct}
+                    aria-valuemin={0}
+                    aria-valuemax={100}
+                    aria-label="QA checklist completion percentage"
+                    className="h-2 w-full max-w-[320px] overflow-hidden rounded-[999px] bg-white/10"
+                  >
+                    <div
+                      className="h-full rounded-[999px] bg-[#81c5c9] transition-all duration-300"
+                      style={{ width: `${pct}%` }}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <span className="font-mono text-[12px] text-[#aaaaaa] shrink-0">
+                {pct === 100 ? '✨ All QA gates passed!' : 'Complete remaining verification checks'}
+              </span>
+            </div>
+          );
+        })()}
 
         <div
           role="group"

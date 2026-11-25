@@ -173,3 +173,34 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* Print-specific optimization for individual audit reports */
+@media print {
+  header,
+  footer,
+  button,
+  #saved-audits-drawer-button,
+  .no-print {
+    display: none !important;
+  }
+
+  body,
+  html,
+  main {
+    background: #ffffff !important;
+    color: #000000 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+  }
+
+  article,
+  section,
+  div {
+    background: transparent !important;
+    color: #000000 !important;
+    box-shadow: none !important;
+    border-color: #cbd5e1 !important;
+  }
+}
+

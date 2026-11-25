@@ -135,7 +135,8 @@ export default function App() {
 
       <main
         id="main-content"
-        className="mx-auto w-full max-w-[1200px] flex-1 px-4 pb-20 md:px-6"
+        style={{ borderTop: '1px solid var(--color-border-muted-hairline)' }}
+        className="mx-auto w-full max-w-[1200px] flex-1 px-4 pb-20 md:px-6 pt-6"
       >
         <AnimatePresence mode="wait">
           <motion.div

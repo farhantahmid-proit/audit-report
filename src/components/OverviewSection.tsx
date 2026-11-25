@@ -138,7 +138,14 @@ export const OverviewSection: React.FC<OverviewSectionProps> = ({
       </section>
 
       {/* Unified Pillars Grid (Single-Elevation Cards) */}
-      <section aria-labelledby="pillars-heading" className="space-y-6">
+      <section aria-labelledby="pillars-heading" className="relative overflow-hidden space-y-6">
+        {/* Decorative low-opacity SVG watermark */}
+        <div aria-hidden="true" className="absolute -right-12 -top-12 opacity-5 pointer-events-none text-[#81c5c9]">
+          <svg className="w-72 h-72" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+          </svg>
+        </div>
+
         <div className="flex flex-col justify-between gap-2 sm:flex-row sm:items-end">
           <div>
             <p className="font-mono text-[12px] text-[#81c5c9]">01. Scope &amp; Technical Context</p>
@@ -152,40 +159,47 @@ export const OverviewSection: React.FC<OverviewSectionProps> = ({
         </div>
 
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-          {AUDIT_SUMMARY_CARDS.map((card) => (
-            <article
-              key={card.index}
-              className="flex flex-col justify-between rounded-[10px] bg-[#0d1117] p-6 shadow-token-1 transition-shadow duration-150 hover:shadow-token-2"
-            >
-              <div className="space-y-3">
-                <div className="flex items-center justify-between gap-4 font-mono text-[12px] text-[#aaaaaa]">
-                  <span>
-                    {card.index} {card.meta}
-                  </span>
+          {AUDIT_SUMMARY_CARDS.map((card) => {
+            const isFirst = card.index === '01.';
+            return (
+              <article
+                key={card.index}
+                className={`flex flex-col justify-between rounded-[10px] bg-[#0d1117] p-6 shadow-token-1 transition-all duration-200 ${
+                  isFirst
+                    ? 'hover:scale-[1.02] hover:brightness-110 hover:border hover:border-[#81c5c9]/50'
+                    : 'hover:shadow-token-2'
+                }`}
+              >
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between gap-4 font-mono text-[12px] text-[#aaaaaa]">
+                    <span>
+                      {card.index} {card.meta}
+                    </span>
+                  </div>
+                  <h3 className="text-[18.24px] font-semibold text-[#f1f5f9]">
+                    {card.title}
+                  </h3>
+                  <p className="text-[15.2px] leading-[1.65] text-[#aaaaaa]">
+                    {card.body}
+                  </p>
                 </div>
-                <h3 className="text-[18.24px] font-semibold text-[#f1f5f9]">
-                  {card.title}
-                </h3>
-                <p className="text-[15.2px] leading-[1.65] text-[#aaaaaa]">
-                  {card.body}
-                </p>
-              </div>
 
-              <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-white/10 pt-4">
-                <span className="font-mono text-[12px] text-[#aaaaaa] tabular-nums">
-                  {card.metric}
-                </span>
-                <button
-                  type="button"
-                  onClick={() => onNavigate(card.target)}
-                  className="inline-flex min-h-[40px] items-center gap-1.5 text-[14px] font-medium text-[#81c5c9] transition-colors duration-150 hover:text-[#f1f5f9] whitespace-nowrap cursor-pointer"
-                >
-                  <span>{card.actionLabel}</span>
-                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                </button>
-              </div>
-            </article>
-          ))}
+                <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-white/10 pt-4">
+                  <span className="font-mono text-[12px] text-[#aaaaaa] tabular-nums">
+                    {card.metric}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => onNavigate(card.target)}
+                    className="inline-flex min-h-[40px] items-center gap-1.5 text-[14px] font-medium text-[#81c5c9] transition-colors duration-150 hover:text-[#f1f5f9] whitespace-nowrap cursor-pointer"
+                  >
+                    <span>{card.actionLabel}</span>
+                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  </button>
+                </div>
+              </article>
+            );
+          })}
         </div>
       </section>
 
@@ -196,7 +210,13 @@ export const OverviewSection: React.FC<OverviewSectionProps> = ({
           <h2 id="density-inventory-heading" className="text-[24px] font-semibold text-[#f1f5f9]">
             Marketing Site Element Distribution &amp; Density Governance
           </h2>
-          <p className="max-w-[70ch] text-[15.2px] leading-[1.65] text-[#aaaaaa]">
+          <p
+            style={{
+              borderColor: 'var(--color-border-strong)',
+              backgroundColor: 'rgba(129, 197, 201, 0.05)',
+            }}
+            className="max-w-[70ch] text-[15.2px] leading-[1.65] text-[#f1f5f9] p-4 rounded-[6px] border-l-2"
+          >
             Every element count measured across the OpenSandbox marketing review surface maps directly to explicit typography, spacing, overflow, and empty-state rules. Select any row to inspect its seven-state matrix.
           </p>
         </div>
